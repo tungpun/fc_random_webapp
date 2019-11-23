@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <title>PES Random Tool</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+    <style>
+	h1 {
+  		text-shadow: 0 0 3px #FF0000;
+	}
+	</style>
+
+    <nav class="site-header sticky-top py-1">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+		<a class="py-2 d-none d-md-inline-block" href="#">PES Random Tool</a>
+      </div>
+    </nav>
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light container">
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-5 font-weight-normal" id="chosedteam">Please spin!</h1>
+<!--
+        <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
+-->
+        <a class="btn btn-outline-secondary" href="#" id="spinbtn" onclick="spin();">Spin</a>
+      </div>
+      <div class="product-device box-shadow d-none d-md-block"></div>
+      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">Teams</h2>
+          <!--          <p class="lead">And an even wittier subheading.</p> -->
+        </div>
+        <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 400px; border-radius: 21px 21px 0 0;">
+            <div class="md-form">
+                <textarea id="teams" class="md-textarea form-control" rows="18">
+Manchester United
+Manchester City
+Chelsea
+Arsenal
+Liverpool
+Tottenham
+Wolves
+Inter Milan
+AC Milan
+Napoli
+AS Roma
+Juvetus
+Barca
+Real Madrid
+ATM Madrid
+PSG
+Leicester City
+Everton
+AS Monaco
+Ajax
+Bayer Munchen
+On your own in EPL
+On your own in La Liga
+On your own
+France
+Germany
+England
+Belgium
+Brazil
+Argen
+Netherland
+Italia
+                </textarea>
+                <label for="form7">Teams</label>
+            </div>
+        </div>
+      </div>
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">Internal</h2>
+          <!--          <p class="lead">And an even wittier subheading.</p> -->
+        </div>
+        <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 400px; border-radius: 21px 21px 0 0;">
+              <div class="md-form">
+                  <textarea id="teams" class="md-textarea form-control" rows="18"></textarea>
+                  <label for="form7">Teams</label>
+              </div>
+        </div>
+      </div>
+    </div>
+
+	<script>
+    
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+	async function spin() {
+		let teams = document.getElementById("teams").value.trim().split("\n"); // ["A", "B", "C"];
+        document.getElementById("chosedteam").innerHTML = "Thinking.";
+        document.getElementById("spinbtn").style.visibility = "hidden";
+        await sleep(200);
+        document.getElementById("chosedteam").innerHTML = "Thinking..";
+        await sleep(200);
+        document.getElementById("chosedteam").innerHTML = "Thinking...";
+        await sleep(200);
+        document.getElementById("chosedteam").innerHTML = "Thinking....";
+        document.getElementById("spinbtn").style.visibility = "visible";
+        let chosed_team = teams[Math.floor(Math.random() * teams.length)];
+        document.getElementById("chosedteam").innerHTML = "<h3>Your team:</h3><h1>" + chosed_team + "</h1>";
+	}
+	</script>
+
+</body>
+</html>
